@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VORTEX F1 - Login & Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://i.postimg.cc/C5vpZbJv/vortex-f1-team.pngg') no-repeat center center/cover;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            position: relative;
+            margin: 15px 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2c3e50;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #666;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2c3e50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background: #34495e;
+        }
+
+        .toggle {
+            margin-top: 15px;
+            color: #3498db;
+            cursor: pointer;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .toggle:hover {
+            color: #2980b9;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://i.postimg.cc/sX260b32/vortex.webp" alt="VORTEX F1 Logo">
+    <h2 id="formTitle">Login</h2>
+
+    <form id="authForm">
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Username" required>
+            <div class="error-message" id="username-error"></div>
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password" required>
+            <i class="fas fa-eye password-toggle" onclick="togglePassword()"></i>
+            <div class="error-message" id="password-error"></div>
+        </div>
+
+        <div class="loading" id="loading"></div>
+        <button type="submit">Submit</button>
+        <div class="success-message" id="success-message"></div>
+    </form>
+</div>
+
+<script>
+    function togglePassword() {
+        const passwordInput = document.getElementById("password");
+        const icon = document.querySelector(".password-toggle");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    }
+
+    document.getElementById("authForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        document.getElementById("success-message").textContent = "Login successful!";
+        document.getElementById("success-message").style.display = "block";
+        
+        // Redirect after successful login
+        setTimeout(function() {
+            window.location.href = "https://joan5712.hocoos.com";
+        }, 2000);
+    });
+</script>
+
+</body>
+</html>
